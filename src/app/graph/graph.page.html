@@ -1,0 +1,24 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>graph</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div id="container">
+        <ion-button routerLink="/">Rates</ion-button>
+        <ion-button (click)="goToChart()">Charts</ion-button>
+
+        <ion-select [(ngModel)]="cur" okText="Add" cancelText="Dismiss" (ionChange)="newChart()">
+            <ion-select-option *ngFor="let cur of rateList" value={{cur[0]}}>{{cur[0]}}</ion-select-option>
+        </ion-select>
+        <ion-card>
+            <ion-card-header>
+                Line Chart
+            </ion-card-header>
+            <ion-card-content>
+                <canvas #lineCanvas style="position: relative"></canvas>
+            </ion-card-content>
+        </ion-card>
+    </div>
+</ion-content>
